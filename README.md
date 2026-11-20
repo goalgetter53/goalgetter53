@@ -12,13 +12,13 @@
 
 | Project | What it does | Measured |
 |---|---|---|
-| [**signalgraph**](https://github.com/goalgetter53/signalgraph) | Public buying signals (SEC Form D, job boards, GitHub, news) → entity resolution → time-decayed account scoring. DuckDB, FastAPI. | F1 0.974 vs 0.784 naive join; ~4k records/s at 50k; 809 live signals |
-| [**waterfall-optimizer**](https://github.com/goalgetter53/waterfall-optimizer) | Enrichment orchestrator: Thompson-sampling provider routing per segment, crash-safe queue, rate limits, circuit breakers, cost ledger. | −20.9% cost per verified email vs static waterfall (simulation, 5 seeds) |
-| [**ai-sdr-crew**](https://github.com/goalgetter53/ai-sdr-crew) | Multi-agent outbound copilot on Claude: cited facts only, prompt-injection defences, regression evals, Bayesian A/B, human approval queue. | 0/14 red-team injections succeed; v2 prompt −40% est. cost (mock mode) |
-| [**crm-sync-engine**](https://github.com/goalgetter53/crm-sync-engine) | Bi-directional warehouse ↔ HubSpot sync: YAML mappings, per-field conflict policies, terraform-style plan/apply, dead-letter + replay. | 75× fewer API calls at 50k records; 0 mismatches under injected faults |
-| [**gtm-attribution-lab**](https://github.com/goalgetter53/gtm-attribution-lab) | Attribution engine (heuristics, Markov, Shapley) validated against synthetic ground truth; DuckDB SQL layers; Kaplan-Meier funnel timing. | Shows last-touch gives organic 17–21% credit when its true effect is 0 |
+| [**signalgraph**](https://github.com/goalgetter53/signalgraph) | Public buying signals (SEC Form D, job boards, GitHub, news) → entity resolution → time-decayed account scoring. DuckDB, FastAPI. | **Real (Wikidata, 5,044 records):** F1 0.400 vs 0.291 naive join. Synthetic: 0.974 vs 0.784. 809 live signals |
+| [**waterfall-optimizer**](https://github.com/goalgetter53/waterfall-optimizer) | Enrichment orchestrator: Thompson-sampling provider routing per segment, crash-safe queue, rate limits, circuit breakers, cost ledger. | **Real prices + published hit rates:** −17.2% ± 4.2 pp cost per verified email vs cheapest-first (outcomes simulated) |
+| [**ai-sdr-crew**](https://github.com/goalgetter53/ai-sdr-crew) | Multi-agent outbound copilot on Claude: cited facts only, prompt-injection defences, regression evals, Bayesian A/B, human approval queue. | **Real attacks (3 public datasets):** detector catches 44.8%, 0 false alarms on benign data; in-house suite 0/14 got through |
+| [**crm-sync-engine**](https://github.com/goalgetter53/crm-sync-engine) | Bi-directional warehouse ↔ HubSpot sync: YAML mappings, per-field conflict policies, terraform-style plan/apply, dead-letter + replay. | **Real (11,082 Wikidata companies, 10 yrs of changes):** 52.7× fewer API calls; 0 mismatches under injected faults (fake HubSpot) |
+| [**gtm-attribution-lab**](https://github.com/goalgetter53/gtm-attribution-lab) | Attribution engine (heuristics, Markov, Shapley) validated against synthetic ground truth; DuckDB SQL layers; Kaplan-Meier funnel timing. | **Real (Criteo, 16.5M impressions):** models disagree most under Markov (ρ 0.93 vs last touch). Synthetic: last-touch gives organic 17–21% credit when its true effect is 0 |
 
-Every number comes from an actual run; simulation, synthetic and fake-API results are labelled in each README.
+Every number comes from an actual run. Real-data results (Wikidata, Criteo, public attack datasets, real vendor prices) are listed first; simulation, synthetic and fake-API results are labelled in each README.
 
 ---
 
