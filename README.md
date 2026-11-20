@@ -18,6 +18,17 @@
 | [**crm-sync-engine**](https://github.com/goalgetter53/crm-sync-engine) | Bi-directional warehouse ↔ HubSpot sync: YAML mappings, per-field conflict policies, terraform-style plan/apply, dead-letter + replay. | **Real (11,082 Wikidata companies, 10 yrs of changes):** 52.7× fewer API calls; 0 mismatches under injected faults (fake HubSpot) |
 | [**gtm-attribution-lab**](https://github.com/goalgetter53/gtm-attribution-lab) | Attribution engine (heuristics, Markov, Shapley) validated against synthetic ground truth; DuckDB SQL layers; Kaplan-Meier funnel timing. | **Real (Criteo, 16.5M impressions):** models disagree most under Markov (ρ 0.93 vs last touch). Synthetic: last-touch gives organic 17–21% credit when its true effect is 0 |
 
+
+**Running now: systems that produce real data**
+
+| Project | What it does | Status |
+|---|---|---|
+| [**lead2account**](https://github.com/goalgetter53/lead2account) | Lead-to-account matching, dedupe and parent–child hierarchies (GLEIF + Wikidata) | **51,581 real records:** dedupe F1 0.771 vs 0.697; duplicate rate 58.1% → 21.9%; hand labels 0/500 |
+| [**enrichment-benchmark**](https://github.com/goalgetter53/enrichment-benchmark) | Enrichment-provider benchmark + open waterfall library | Public 5,000-contact data: 80% valid coverage for $0.0179/contact; own hand-verified set 0/1,000 |
+| [**signal-backtest**](https://github.com/goalgetter53/signal-backtest) | Daily buying-signal collector, backtested on real reply outcomes | 1,000 companies tracked; 3,431 open roles at 151 companies; backtest week 0 of 8 |
+| [**outbound-engine**](https://github.com/goalgetter53/outbound-engine) | Live outbound for my agency: deliverability, sequencing, compliance, public dashboard | Week 0: 573 ICP companies listed; sending not started |
+| [**speed-to-lead**](https://github.com/goalgetter53/speed-to-lead) | WhatsApp-first speed-to-lead for a real paint shop in Pune | Week 0: 2-week baseline first |
+
 Every number comes from an actual run. Real-data results (Wikidata, Criteo, public attack datasets, real vendor prices) are listed first; simulation, synthetic and fake-API results are labelled in each README.
 
 ---
